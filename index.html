@@ -21,6 +21,34 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
+// ─── ERROR BOUNDARY ──────────────────────────────────────
+class ErrorBoundary extends React.Component {
+  constructor(props){ super(props); this.state={hasError:false,error:null}; }
+  static getDerivedStateFromError(e){ return {hasError:true,error:e}; }
+  render(){
+    if(this.state.hasError) return(
+      <div style={{minHeight:"100vh",background:"#F2F2F7",display:"flex",alignItems:"center",
+        justifyContent:"center",padding:32,fontFamily:"-apple-system,sans-serif"}}>
+        <div style={{background:"#fff",borderRadius:20,padding:28,maxWidth:340,textAlign:"center",
+          boxShadow:"0 4px 20px rgba(0,0,0,0.08)"}}>
+          <p style={{fontSize:44,margin:"0 0 12px"}}>⚠️</p>
+          <p style={{fontSize:18,fontWeight:700,color:"#1C1C1E",margin:"0 0 8px"}}>Algo salió mal</p>
+          <p style={{fontSize:13,color:"#8E8E93",margin:"0 0 20px",lineHeight:1.5}}>
+            {this.state.error?.message||"Error inesperado"}
+          </p>
+          <button onClick={()=>this.setState({hasError:false,error:null})}
+            style={{background:"#007AFF",color:"#fff",border:"none",borderRadius:12,
+              padding:"12px 28px",fontSize:15,fontWeight:700,cursor:"pointer"}}>
+            Reintentar
+          </button>
+        </div>
+      </div>
+    );
+    return this.props.children;
+  }
+}
+
+
 // ─── CONSTANTS ────────────────────────────────────────────
 const CARD_THEMES = [
   { bg: ["#1C1C1E","#2C2C2E"], bar: "#FFD60A", name: "Amarillo"   },
@@ -1404,33 +1432,6 @@ function BottomNav({active,onChange,debtAlert}){
       ))}
     </div>
   );
-}
-
-// ─── ERROR BOUNDARY ──────────────────────────────────────
-class ErrorBoundary extends React.Component {
-  constructor(props){ super(props); this.state={hasError:false,error:null}; }
-  static getDerivedStateFromError(e){ return {hasError:true,error:e}; }
-  render(){
-    if(this.state.hasError) return(
-      <div style={{minHeight:"100vh",background:"#F2F2F7",display:"flex",alignItems:"center",
-        justifyContent:"center",padding:32,fontFamily:"-apple-system,sans-serif"}}>
-        <div style={{background:"#fff",borderRadius:20,padding:28,maxWidth:340,textAlign:"center",
-          boxShadow:"0 4px 20px rgba(0,0,0,0.08)"}}>
-          <p style={{fontSize:44,margin:"0 0 12px"}}>⚠️</p>
-          <p style={{fontSize:18,fontWeight:700,color:"#1C1C1E",margin:"0 0 8px"}}>Algo salió mal</p>
-          <p style={{fontSize:13,color:"#8E8E93",margin:"0 0 20px",lineHeight:1.5}}>
-            {this.state.error?.message||"Error inesperado"}
-          </p>
-          <button onClick={()=>this.setState({hasError:false,error:null})}
-            style={{background:"#007AFF",color:"#fff",border:"none",borderRadius:12,
-              padding:"12px 28px",fontSize:15,fontWeight:700,cursor:"pointer"}}>
-            Reintentar
-          </button>
-        </div>
-      </div>
-    );
-    return this.props.children;
-  }
 }
 
 // ─── HOME / DASHBOARD ─────────────────────────────────────
