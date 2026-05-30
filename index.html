@@ -23,22 +23,13 @@
 
 // ─── CONSTANTS ────────────────────────────────────────────
 const CARD_THEMES = [
-  { bg: ["#0f0c29","#302b63","#24243e"], bar: "#a78bfa", name: "Cosmos"    },
-  { bg: ["#000428","#004e92"],           bar: "#60a5fa", name: "Océano"    },
-  { bg: ["#134e5e","#71b280"],           bar: "#6ee7b7", name: "Aurora"    },
-  { bg: ["#1a1a2e","#16213e","#0f3460"], bar: "#818cf8", name: "Medianoche"},
-  { bg: ["#4a0072","#7c3aed"],           bar: "#f0abfc", name: "Galaxia"   },
-  { bg: ["#7f1d1d","#991b1b","#c2410c"], bar: "#fca5a5", name: "Volcanic"  },
-  { bg: ["#064e3b","#065f46"],           bar: "#34d399", name: "Selva"     },
-  { bg: ["#1e3a5f","#1e40af","#1d4ed8"], bar: "#93c5fd", name: "Zafiro"    },
-  { bg: ["#4a1942","#6b21a8","#7e22ce"], bar: "#e879f9", name: "Nebula"    },
-  { bg: ["#0c1445","#1e3a8a","#1d4ed8"], bar: "#fbbf24", name: "Índigo" },
-  { bg: ["#1c1917","#292524","#44403c"], bar: "#d6d3d1", name: "Carbón"    },
-  { bg: ["#042f2e","#134e4a","#0f766e"], bar: "#2dd4bf", name: "Teal"      },
-  { bg: ["#431407","#7c2d12","#9a3412"], bar: "#fb923c", name: "Magma"     },
-  { bg: ["#0d0d0d","#1a1a1a"],           bar: "#f59e0b", name: "Obsidiana" },
-  { bg: ["#1e1b4b","#312e81","#4338ca"], bar: "#a5b4fc", name: "Iris"      },
-  { bg: ["#0a0a0a","#1f2937","#374151"], bar: "#f9fafb", name: "Acero"     },
+  { bg: ["#1C1C1E","#2C2C2E"], bar: "#FFD60A", name: "Amarillo"   },
+  { bg: ["#7B0000","#B00020"], bar: "#FF6B6B", name: "Rojo"       },
+  { bg: ["#003A8C","#0055CC"], bar: "#60A5FA", name: "Azul"       },
+  { bg: ["#005F73","#0096B4"], bar: "#67E8F9", name: "Azul Cielo" },
+  { bg: ["#3B0764","#6B21A8"], bar: "#D8B4FE", name: "Morado"     },
+  { bg: ["#7C2D12","#C2410C"], bar: "#FDBA74", name: "Naranja"    },
+  { bg: ["#14532D","#15803D"], bar: "#86EFAC", name: "Verde"      },
 ];
 
 const CATEGORIES = [
@@ -155,8 +146,6 @@ function healthScore(cards){
 }
 
 function themeBg(theme) {
-  if(theme.bg.length===3)
-    return `linear-gradient(145deg, ${theme.bg[0]} 0%, ${theme.bg[1]} 55%, ${theme.bg[2]} 100%)`;
   return `linear-gradient(145deg, ${theme.bg[0]} 0%, ${theme.bg[1]} 100%)`;
 }
 
